@@ -1,0 +1,34 @@
+modLoader="javafml" #mandatory
+loaderVersion="[41,)"
+license="MIT License"
+[[mods]] #mandatory
+modId="simplecornreset" #mandatory
+# ${file.jarVersion} will substitute the value of the Implementation-Version as read from the mod's JAR file metadata
+version="${file.jarVersion}" #mandatory
+displayName="SimpleCorn Reset" #mandatory
+displayURL="https://www.ykisl.ru/" #optional
+logoFile="simplecornreset.png" #optional
+credits="Original mod by cleverpanda714. Remake by Ykisl" #optional
+authors="Cleverpanda714, Ykisl" #optional
+#displayTest="MATCH_VERSION" # MATCH_VERSION is the default if nothing is specified (#optional)
+
+description='''
+This is a remake of the original Simple Corn mod.
+
+Corn like Mojang might make!
+'''
+
+[[dependencies.simplecornreset]] #optional
+    modId="forge" #mandatory
+    mandatory=true #mandatory
+    versionRange="[41,)" #mandatory
+    # An ordering relationship for the dependency - BEFORE or AFTER required if the relationship is not mandatory
+    ordering="NONE"
+    # Side this dependency is applied on - BOTH, CLIENT or SERVER
+    side="BOTH"
+[[dependencies.simplecornreset]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.19,1.20)"
+    ordering="NONE"
+    side="BOTH"

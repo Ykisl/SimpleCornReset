@@ -1,0 +1,15 @@
+{
+	"item.simplecornreset.corncob": "Corncob",
+	"item.simplecornreset.kernels": "Corn Kernels",
+	"block.simplecornreset.corn": "Corn",
+	"block.simplecornreset.corn_mid": "Corn",
+	"block.simplecornreset.corn_top": "Corn",
+	"item.simplecornreset.roastedcorn": "Roasted Corn",
+	"item.simplecornreset.cornchowder": "Corn Chowder",
+	"item.simplecornreset.chickencornchowder": "Chicken Corn Chowder",
+	"item.simplecornreset.kernels": "Corn Kernels",
+	"item.simplecornreset.poppedcorn": "Popcorn",
+	"item.simplecornreset.popfirework": "Firework Rocket",
+	"simplecornreset.advancements.husbandry.plant_corn.description": "Plant some corn and watch it grow",
+	"simplecornreset.advancements.husbandry.plant_corn.title": "A Corny Joke"
+}

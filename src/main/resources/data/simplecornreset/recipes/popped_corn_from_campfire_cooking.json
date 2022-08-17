@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:campfire_cooking",
+  "ingredient": {
+    "item": "simplecornreset:kernels"
+  },
+  "result": "simplecornreset:poppedcorn",
+  "experience": 0.20,
+  "cookingtime": 600
+}

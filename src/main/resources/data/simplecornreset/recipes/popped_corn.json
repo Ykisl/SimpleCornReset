@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "simplecornreset:kernels"
+  },
+  "result": "simplecornreset:poppedcorn",
+  "experience": 0.01,
+  "cookingtime": 200
+}
