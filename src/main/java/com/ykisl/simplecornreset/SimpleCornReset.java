@@ -3,6 +3,8 @@ package com.ykisl.simplecornreset;
 import com.mojang.logging.LogUtils;
 import com.ykisl.simplecornreset.init.ModBlocks;
 import com.ykisl.simplecornreset.init.ModItems;
+import com.ykisl.simplecornreset.init.ModLootModifiers;
+
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -24,6 +26,7 @@ public class SimpleCornReset
     
     private ModItems modItems;
     private ModBlocks modBlocks;
+    private ModLootModifiers modLootModifiers;
 
     public SimpleCornReset()
     {
@@ -32,9 +35,11 @@ public class SimpleCornReset
 
         modItems = new ModItems();
         modBlocks = new ModBlocks();
+        modLootModifiers = new ModLootModifiers();
         
         modItems.Register(modEventBus);
         modBlocks.Register(modEventBus);
+        modLootModifiers.Register(modEventBus);
 
         MinecraftForge.EVENT_BUS.register(this);
     }
