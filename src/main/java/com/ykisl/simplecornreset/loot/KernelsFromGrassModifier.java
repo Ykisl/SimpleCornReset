@@ -1,8 +1,13 @@
-package com.ykisl.simplecornreset.events.loot;
+package com.ykisl.simplecornreset.loot;
+
+import java.util.function.Supplier;
 
 import org.jetbrains.annotations.NotNull;
 
+import com.google.common.base.Suppliers;
 import com.google.gson.JsonObject;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.ykisl.simplecornreset.init.ModItems;
 
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
@@ -10,11 +15,15 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
+import net.minecraftforge.common.loot.IGlobalLootModifier;
 import net.minecraftforge.common.loot.LootModifier;
 
 public class KernelsFromGrassModifier extends LootModifier
 {
+	public static final Supplier<Codec<KernelsFromGrassModifier>> CODEC = Suppliers.memoize(() -> 
+	{
+		return RecordCodecBuilder.create(inst -> codecStart(inst).apply(inst, KernelsFromGrassModifier::new));
+	});
 	
 	protected KernelsFromGrassModifier(LootItemCondition[] conditionsIn) 
 	{
@@ -27,22 +36,10 @@ public class KernelsFromGrassModifier extends LootModifier
 		generatedLoot.add(new ItemStack(ModItems.KERNELS.get(), 1));
 		return generatedLoot;
 	}
-	
-	public static class Serializer extends GlobalLootModifierSerializer<KernelsFromGrassModifier>
+
+	@Override
+	public Codec<? extends IGlobalLootModifier> codec() 
 	{
-
-		@Override
-		public KernelsFromGrassModifier read(ResourceLocation location, JsonObject object, LootItemCondition[] ailootcondition) 
-		{		
-			return new KernelsFromGrassModifier(ailootcondition);
-		}
-
-		@Override
-		public JsonObject write(KernelsFromGrassModifier instance) 
-		{
-			var jsonObject = makeConditions(instance.conditions);	
-			return jsonObject;
-		}
-		
+		return CODEC.get();
 	}
 }

@@ -8,7 +8,7 @@ import com.ykisl.simplecornreset.blocks.BlockCornTop;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.level.block.Block;
-import net.minecraftforge.event.entity.EntityJoinWorldEvent;
+import net.minecraftforge.event.entity.EntityJoinLevelEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -41,7 +41,7 @@ public class ModBlocks
 		ItemBlockRenderTypes.setRenderLayer(CORN_TOP.get(), RenderType.cutout());
 	}
 	
-	public static void EntityJoinWorldSetup(EntityJoinWorldEvent entityJoinWorldEvent) 
+	public static void EntityJoinWorldSetup(EntityJoinLevelEvent entityJoinLevelEvent) 
     {
     	
     }

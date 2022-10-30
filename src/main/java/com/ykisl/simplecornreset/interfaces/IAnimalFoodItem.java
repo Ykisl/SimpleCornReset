@@ -10,7 +10,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
-import net.minecraftforge.event.entity.EntityJoinWorldEvent;
+import net.minecraftforge.event.entity.EntityJoinLevelEvent;
 
 public interface IAnimalFoodItem 
 {
@@ -61,9 +61,9 @@ public interface IAnimalFoodItem
     	}
     }
 	
-	public default void EntityJoinWorldSetup(EntityJoinWorldEvent entityJoinWorldEvent) 
+	public default void EntityJoinWorldSetup(EntityJoinLevelEvent entityJoinLevelEvent) 
 	{
-		var entity = entityJoinWorldEvent.getEntity();
+		var entity = entityJoinLevelEvent.getEntity();
 		
 		if(entity instanceof Animal animal) 
     	{

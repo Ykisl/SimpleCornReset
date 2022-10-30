@@ -11,7 +11,7 @@ import com.ykisl.simplecornreset.items.ItemRoastedCorn;
 
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.ComposterBlock;
-import net.minecraftforge.event.entity.EntityJoinWorldEvent;
+import net.minecraftforge.event.entity.EntityJoinLevelEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -46,9 +46,9 @@ public class ModItems
 		
 	}
     
-    public static void EntityJoinWorldSetup(EntityJoinWorldEvent entityJoinWorldEvent) 
+    public static void EntityJoinWorldSetup(EntityJoinLevelEvent entityJoinLevelEvent)
     {
-    	((IAnimalFoodItem)CORNCOB.get()).EntityJoinWorldSetup(entityJoinWorldEvent);
-    	((IAnimalFoodItem)KERNELS.get()).EntityJoinWorldSetup(entityJoinWorldEvent);
+    	((IAnimalFoodItem)CORNCOB.get()).EntityJoinWorldSetup(entityJoinLevelEvent);
+    	((IAnimalFoodItem)KERNELS.get()).EntityJoinWorldSetup(entityJoinLevelEvent);
     }
 }
