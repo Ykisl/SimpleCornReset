@@ -107,7 +107,8 @@ public class BlockCorn extends CropBlock
 				ForgeHooks.onCropsGrowPost(level, blockPos, blockState);
 				
 				var nextState = getNextState();
-				if(isMaxAge((level.getBlockState(blockPos))) && nextState != null) 
+				var posBlockState = level.getBlockState(blockPos);
+				if(posBlockState.hasProperty(AGE) && isMaxAge(posBlockState) && nextState != null) 
 				{
 					var newPos = blockPos.above();
 					var newBlockState = level.getBlockState(newPos);

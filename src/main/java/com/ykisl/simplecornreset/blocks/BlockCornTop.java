@@ -53,7 +53,7 @@ public class BlockCornTop extends BlockCorn
 	
 	@Override
 	protected void preformGrowCrops(Level level, BlockPos blockPos, BlockState blockState, RandomSource randomSource, boolean isBonemeal)
-	{
+	{		
 		boolean canGrow = GetGrowRandom(isBonemeal, randomSource);
 		if(!isMaxAge(blockState)) 
 		{
