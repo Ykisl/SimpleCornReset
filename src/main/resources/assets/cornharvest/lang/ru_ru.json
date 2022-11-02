@@ -1,0 +1,14 @@
+﻿{
+  "item.cornharvest.corncob": "Кукурузный початок",
+  "block.cornharvest.corn": "Кукуруза",
+    "block.cornharvest.corn_mid": "Кукуруза",
+    "block.cornharvest.corn_top": "Кукуруза",
+	"item.cornharvest.roastedcorn": "Жареная кукуруза",
+    "item.cornharvest.cornchowder": "Кукурузная похлебка",
+    "item.cornharvest.chickencornchowder": "Кукурузная похлебка с курицей",
+    "item.cornharvest.kernels": "Кукурузные зерна",
+    "item.cornharvest.poppedcorn": "Попкорн",
+    "item.cornharvest.popfirework": "Кукурузный фейерверк",
+	"cornharvest.advancements.husbandry.plant_corn.description": "Посади кукурузу и смотри, как она растёт",
+	"cornharvest.advancements.husbandry.plant_corn.title": "Кто кукурузу сеет..."
+}

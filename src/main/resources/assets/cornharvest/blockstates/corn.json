@@ -1,0 +1,10 @@
+{
+  "variants":{   
+  	  "age=0":{"model": "cornharvest:block/corn_1"},
+  	  "age=1":{"model": "cornharvest:block/corn_2"},
+  	  "age=2":{"model": "cornharvest:block/corn_3"},
+  	  "age=3":{"model": "cornharvest:block/corn_4"},
+  	  "age=4":{"model": "cornharvest:block/corn_5"},
+  	  "age=5":{"model": "cornharvest:block/corn_10"}
+  }
+}

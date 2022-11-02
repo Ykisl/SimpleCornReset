@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:smelting",
-  "ingredient": {
-    "item": "simplecornreset:corncob"
-  },
-  "result": "simplecornreset:roastedcorn",
-  "experience": 0.20,
-  "cookingtime": 200
-}

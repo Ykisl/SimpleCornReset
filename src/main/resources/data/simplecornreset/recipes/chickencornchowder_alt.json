@@ -1,8 +1,0 @@
-{
-    "type": "minecraft:crafting_shapeless",
-    "ingredients": [
-        { "item": "simplecornreset:cornchowder" },
-	{ "item": "minecraft:cooked_chicken" }
-    ],
-    "result": { "item": "simplecornreset:chickencornchowder"}
-}

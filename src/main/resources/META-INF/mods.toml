@@ -2,10 +2,10 @@ modLoader="javafml" #mandatory
 loaderVersion="[41,)"
 license="MIT License"
 [[mods]] #mandatory
-modId="simplecornreset" #mandatory
+modId="cornharvest" #mandatory
 # ${file.jarVersion} will substitute the value of the Implementation-Version as read from the mod's JAR file metadata
 version="${file.jarVersion}" #mandatory
-displayName="SimpleCorn Reset" #mandatory
+displayName="Corn Harvest" #mandatory
 displayURL="https://www.ykisl.ru/" #optional
 logoFile="cornharvest.png" #optional
 credits="Original mod by cleverpanda714. Remake by Ykisl" #optional
@@ -18,7 +18,7 @@ This is a remake of the original Simple Corn mod.
 Corn like Mojang might make!
 '''
 
-[[dependencies.simplecornreset]] #optional
+[[dependencies.cornharvest]] #optional
     modId="forge" #mandatory
     mandatory=true #mandatory
     versionRange="[41,)" #mandatory
@@ -26,7 +26,7 @@ Corn like Mojang might make!
     ordering="NONE"
     # Side this dependency is applied on - BOTH, CLIENT or SERVER
     side="BOTH"
-[[dependencies.simplecornreset]]
+[[dependencies.cornharvest]]
     modId="minecraft"
     mandatory=true
     versionRange="[1.19,)"

@@ -1,7 +1,7 @@
 {
   "replace": false,
   "entries": [
-    "simplecornreset:kernels_from_grass",
-	"simplecornreset:kernels_from_tall_grass"
+    "cornharvest:kernels_from_grass",
+	"cornharvest:kernels_from_tall_grass"
   ]
 }

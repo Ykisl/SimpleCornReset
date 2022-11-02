@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "cornharvest:corncob"
+  },
+  "result": "cornharvest:roastedcorn",
+  "experience": 0.20,
+  "cookingtime": 200
+}

@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "cornharvest:kernels"
+  },
+  "result": "cornharvest:poppedcorn",
+  "experience": 0.01,
+  "cookingtime": 200
+}

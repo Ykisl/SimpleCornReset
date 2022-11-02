@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smoking",
+  "ingredient": {
+    "item": "cornharvest:corncob"
+  },
+  "result": "cornharvest:roastedcorn",
+  "experience": 0.20,
+  "cookingtime": 100
+}

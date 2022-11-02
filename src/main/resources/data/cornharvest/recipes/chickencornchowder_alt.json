@@ -1,0 +1,8 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        { "item": "cornharvest:cornchowder" },
+	{ "item": "minecraft:cooked_chicken" }
+    ],
+    "result": { "item": "cornharvest:chickencornchowder"}
+}
