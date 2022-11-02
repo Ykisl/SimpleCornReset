@@ -5,13 +5,11 @@ import java.util.function.Supplier;
 import org.jetbrains.annotations.NotNull;
 
 import com.google.common.base.Suppliers;
-import com.google.gson.JsonObject;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.ykisl.cornharvest.init.ModItems;
 
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
