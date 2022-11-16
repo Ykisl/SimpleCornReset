@@ -1,7 +1,8 @@
 package com.ykisl.cornharvest.events;
 
+
+
 import com.ykisl.cornharvest.CornHarvest;
-import com.ykisl.cornharvest.init.ModBlocks;
 import com.ykisl.cornharvest.init.ModItems;
 import com.ykisl.cornharvest.init.ModWorldGen;
 
@@ -29,7 +30,6 @@ public class EventBusEvents
 	@SubscribeEvent
 	public static void onEntityJoinWorld(EntityJoinLevelEvent entityJoinLevelEvent) 
 	{
-		ModBlocks.EntityJoinWorldSetup(entityJoinLevelEvent);
 		ModItems.EntityJoinWorldSetup(entityJoinLevelEvent);
 	}
 	

@@ -1,6 +1,7 @@
 package com.ykisl.cornharvest;
 
 import com.mojang.logging.LogUtils;
+import com.ykisl.cornharvest.config.CornHarvestConfig;
 import com.ykisl.cornharvest.init.ModBlocks;
 import com.ykisl.cornharvest.init.ModItems;
 import com.ykisl.cornharvest.init.ModLootModifiers;
@@ -10,6 +11,7 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -41,6 +43,8 @@ public class CornHarvest
         modBlocks.Register(modEventBus);
         modLootModifiers.Register(modEventBus);
 
+        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, CornHarvestConfig.SPEC, CornHarvestConfig.CONFIG_FILE_NAME);
+        
         MinecraftForge.EVENT_BUS.register(this);
     }
 

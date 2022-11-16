@@ -1,0 +1,15 @@
+{
+	"item.cornharvest.corncob": "Corncob",
+	"item.cornharvest.kernels": "Corn Kernels",
+	"block.cornharvest.corn": "Corn",
+	"block.cornharvest.corn_mid": "Corn",
+	"block.cornharvest.corn_top": "Corn",
+	"item.cornharvest.roastedcorn": "Roasted Corn",
+	"item.cornharvest.cornchowder": "Corn Chowder",
+	"item.cornharvest.chickencornchowder": "Chicken Corn Chowder",
+	"item.cornharvest.kernels": "Corn Kernels",
+	"item.cornharvest.poppedcorn": "Popcorn",
+	"item.cornharvest.popfirework": "Firework Rocket",
+	"cornharvest.advancements.husbandry.plant_corn.description": "Plant some corn and watch it grow",
+	"cornharvest.advancements.husbandry.plant_corn.title": "A Corny Joke"
+}

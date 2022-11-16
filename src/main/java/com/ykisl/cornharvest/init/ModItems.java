@@ -54,7 +54,7 @@ public class ModItems
     
     public static void ClientSetup(FMLClientSetupEvent event) 
 	{
-		
+    	
 	}
     
     public static void EntityJoinWorldSetup(EntityJoinLevelEvent entityJoinLevelEvent)

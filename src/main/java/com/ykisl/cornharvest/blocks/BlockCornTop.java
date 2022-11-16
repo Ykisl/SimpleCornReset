@@ -2,14 +2,18 @@ package com.ykisl.cornharvest.blocks;
 
 import com.ykisl.cornharvest.init.ModBlocks;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.common.ForgeHooks;
+import net.minecraftforge.common.Tags.Blocks;
 
 public class BlockCornTop extends BlockCorn
 {
@@ -68,6 +72,91 @@ public class BlockCornTop extends BlockCorn
 				
 				ForgeHooks.onCropsGrowPost(level, blockPos, blockState);
 			}
+		}
+	}
+	
+	@Override
+	protected InteractionResult Harvest(BlockState blockState, Level level, BlockPos blockPos) 
+	{
+		if(!CanHarvest(blockState, level, blockPos)) 
+		{
+			return InteractionResult.PASS;
+		}
+		
+		level.destroyBlock(blockPos, true);
+		level.destroyBlock(blockPos.below(), true);
+		level.destroyBlock(blockPos.below(2), true);
+		
+		var cornBlock = (BlockCorn)ModBlocks.CORN.get();		
+		var newBlockState = cornBlock.getStateForAge(0);
+		level.setBlockAndUpdate(blockPos.below(2), newBlockState);
+		
+		return InteractionResult.sidedSuccess(level.isClientSide);
+	}
+	
+	@Override
+	protected boolean CanHarvest(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos) 
+	{
+		if(getAge(blockState) < 1) 
+		{
+			return false;
+		}
+		
+		var midBlock = blockGetter.getBlockState(blockPos.below());
+		if(!midBlock.hasProperty(AGE)) 
+		{
+			return false;
+		}
+		
+		if(getAge(midBlock) < 3)
+		{
+			return false;
+		}
+		
+		var bottomBlock = blockGetter.getBlockState(blockPos.below(2));
+		if(!bottomBlock.hasProperty(AGE)) 
+		{
+			return false;
+		}
+		
+		if(getAge(bottomBlock) < 5)
+		{
+			return false;
+		}
+		
+		return true;
+	}
+	
+	@Override
+	public void performBonemeal(ServerLevel level, RandomSource randomSource, BlockPos blockPos, BlockState blockState) 
+	{
+		if(CanHarvest(blockState, level, blockPos)) 
+		{
+			return;
+		}
+		
+		var cornBottomBlock = (BlockCorn)ModBlocks.CORN.get();	
+		var bottomBlockPos = blockPos.below(2);
+		var bottomBlock = level.getBlockState(bottomBlockPos);
+		if(bottomBlock.getBlock() instanceof BlockCorn && !cornBottomBlock.isMaxAge(bottomBlock)) 
+		{
+			cornBottomBlock.growCrops(level, bottomBlockPos, bottomBlock);
+			return;
+		}
+		
+		var cornMidBlock = (BlockCorn)ModBlocks.CORN_MID.get();	
+		var midBlockPos = blockPos.below();
+		var midBlock = level.getBlockState(midBlockPos);
+		if(midBlock.getBlock() instanceof BlockCornMid && !cornMidBlock.isMaxAge(midBlock)) 
+		{
+			cornMidBlock.growCrops(level, midBlockPos, midBlock);
+			return;
+		}
+		
+		if(!isMaxAge(blockState)) 
+		{
+			growCrops(level, blockPos, blockState);
+			return;
 		}
 	}
 }

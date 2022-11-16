@@ -4,7 +4,7 @@ plugins {
     id 'net.minecraftforge.gradle' version '5.1.+'
 }
 
-version = '1.3'
+version = '1.4'
 group = 'com.ykisl.cornharvest' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'cornharvest'
 
@@ -150,7 +150,7 @@ jar {
         attributes([
                 "Specification-Title"     : "cornharvest",
                 "Specification-Vendor"    : "Ykisl",
-                "Specification-Version"   : "1.3",
+                "Specification-Version"   : "1.4",
                 "Implementation-Title"    : project.name,
                 "Implementation-Version"  : project.jar.archiveVersion,
                 "Implementation-Vendor"   : "Ykisl",

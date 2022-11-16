@@ -4,11 +4,13 @@ import com.ykisl.cornharvest.CornHarvest;
 import com.ykisl.cornharvest.blocks.BlockCorn;
 import com.ykisl.cornharvest.blocks.BlockCornMid;
 import com.ykisl.cornharvest.blocks.BlockCornTop;
+import com.ykisl.cornharvest.interfaces.IAnimalFoodItem;
 
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.event.entity.EntityJoinLevelEvent;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -34,15 +36,11 @@ public class ModBlocks
 
     }
 	
+	@SuppressWarnings("removal")
 	public static void ClientSetup(FMLClientSetupEvent event) 
 	{
 		ItemBlockRenderTypes.setRenderLayer(CORN.get(), RenderType.cutout());
 		ItemBlockRenderTypes.setRenderLayer(CORN_MID.get(), RenderType.cutout());
 		ItemBlockRenderTypes.setRenderLayer(CORN_TOP.get(), RenderType.cutout());
 	}
-	
-	public static void EntityJoinWorldSetup(EntityJoinLevelEvent entityJoinLevelEvent) 
-    {
-    	
-    }
 }

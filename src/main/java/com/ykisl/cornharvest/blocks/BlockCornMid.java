@@ -5,6 +5,7 @@ import com.ykisl.cornharvest.init.ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
@@ -52,8 +53,87 @@ public class BlockCornMid extends BlockCorn
 	}
 	
 	@Override
-	public void performBonemeal(ServerLevel serverLevel, RandomSource randomSource, BlockPos blockPos, BlockState blockState) 
+	protected InteractionResult Harvest(BlockState blockState, Level level, BlockPos blockPos) 
 	{
-		super.performBonemeal(serverLevel, randomSource, blockPos, blockState);
+		if(!CanHarvest(blockState, level, blockPos)) 
+		{
+			return InteractionResult.PASS;
+		}
+		
+		level.destroyBlock(blockPos, true);
+		level.destroyBlock(blockPos.above(), true);
+		level.destroyBlock(blockPos.below(), true);
+		
+		var cornBlock = (BlockCorn)ModBlocks.CORN.get();		
+		var newBlockState = cornBlock.getStateForAge(0);
+		level.setBlockAndUpdate(blockPos.below(), newBlockState);
+		
+		return InteractionResult.sidedSuccess(level.isClientSide);
+	}
+	
+	@Override
+	protected boolean CanHarvest(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos) 
+	{
+		if(getAge(blockState) < 3) 
+		{
+			return false;
+		}
+		
+		var bottomBlock = blockGetter.getBlockState(blockPos.below());
+		if(!bottomBlock.hasProperty(AGE)) 
+		{
+			return false;
+		}
+		
+		if(getAge(bottomBlock) < 5)
+		{
+			return false;
+		}
+		
+		var topBlock = blockGetter.getBlockState(blockPos.above());
+		if(!topBlock.hasProperty(AGE)) 
+		{
+			return false;
+		}
+		
+		if(getAge(topBlock) < 1)
+		{
+			return false;
+		}
+		
+		return true;
+	}
+	
+	@Override
+	public void performBonemeal(ServerLevel level, RandomSource randomSource, BlockPos blockPos, BlockState blockState) 
+	{
+		if(CanHarvest(blockState, level, blockPos)) 
+		{
+			return;
+		}
+		
+		var cornBottomBlock = (BlockCorn)ModBlocks.CORN.get();	
+		var bottomBlockPos = blockPos.below();
+		var bottomBlock = level.getBlockState(bottomBlockPos);
+		if(bottomBlock.getBlock() instanceof BlockCorn && !cornBottomBlock.isMaxAge(bottomBlock)) 
+		{
+			cornBottomBlock.growCrops(level, bottomBlockPos, bottomBlock);
+			return;
+		}
+		
+		if(!isMaxAge(blockState)) 
+		{
+			growCrops(level, blockPos, blockState);
+			return;
+		}
+		
+		var cornTopBlock = (BlockCorn)ModBlocks.CORN_TOP.get();	
+		var topBlockPos = blockPos.above();
+		var topBlock = level.getBlockState(topBlockPos);
+		if(topBlock.getBlock() instanceof BlockCornTop && !cornTopBlock.isMaxAge(topBlock)) 
+		{
+			cornTopBlock.growCrops(level, topBlockPos, topBlock);
+			return;
+		}
 	}
 }
