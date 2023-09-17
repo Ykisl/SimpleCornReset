@@ -1,5 +1,7 @@
 {
-  "variants":{  
+"render_type": "cutout",
+  "variants":
+  {  
 	"age=0":{"model": "cornharvest:block/corn_9"},
 	"age=1":{"model": "cornharvest:block/corn_12"},
 	"age=2":{"model": "cornharvest:block/corn_1"},

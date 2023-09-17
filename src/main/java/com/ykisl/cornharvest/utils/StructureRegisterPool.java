@@ -43,7 +43,6 @@ public class StructureRegisterPool
 			return;
 		}
 		
-		
 		var piece = SinglePoolElement
 				.legacy(nbtResourceLocation.toString(), emptyProcessorList)
 				.apply(StructureTemplatePool.Projection.RIGID);

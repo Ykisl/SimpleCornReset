@@ -51,7 +51,6 @@ public class CornHarvest
     private void commonSetup(final FMLCommonSetupEvent event)
     {
         modItems.Setup(event);
-        modBlocks.Setup(event);
     }
     
     public static Logger GetLogger() 
@@ -66,7 +65,6 @@ public class CornHarvest
         public static void onClientSetup(FMLClientSetupEvent event)
         {
         	ModItems.ClientSetup(event);
-        	ModBlocks.ClientSetup(event);
         }
     }
 }
