@@ -3,5 +3,3 @@ Original mod by cleverpanda714. Remake by Ykisl(yukayukiyuko).
 
 This mod adds corn and dishes from it as if it was added by the mojang themselves.
 The project has been rewritten from scratch to newer versions of Minecraft.
-
-![alt text](https://media.forgecdn.net/attachments/510/552/cornharvest.png)
