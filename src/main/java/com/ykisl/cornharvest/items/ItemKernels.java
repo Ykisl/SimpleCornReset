@@ -11,7 +11,6 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.animal.Chicken;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemNameBlockItem;
 import net.minecraft.world.item.ItemStack;
@@ -29,7 +28,8 @@ public class ItemKernels extends ItemNameBlockItem implements IPlantable, IAnima
 	
 	public ItemKernels() 
 	{
-		super(ModBlocks.CORN.get(), new Item.Properties().tab(CreativeModeTab.TAB_MATERIALS));
+		super(ModBlocks.CORN.get(), new Item.Properties());
+				//.tab(CreativeModeTab.TAB_MATERIALS));
 	}
 
 	@Override

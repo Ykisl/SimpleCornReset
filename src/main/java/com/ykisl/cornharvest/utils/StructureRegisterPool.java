@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import com.mojang.datafixers.util.Pair;
 
 import net.minecraft.core.Registry;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.levelgen.structure.pools.SinglePoolElement;
@@ -15,7 +16,7 @@ import net.minecraftforge.event.server.ServerAboutToStartEvent;
 public class StructureRegisterPool 
 {
 	private static final ResourceKey<StructureProcessorList> EMPTY_PROCESSOR_LIST_KEY = 
-			ResourceKey.create(Registry.PROCESSOR_LIST_REGISTRY, new ResourceLocation("minecraft", "empty"));
+			ResourceKey.create(Registries.PROCESSOR_LIST, new ResourceLocation("minecraft", "empty"));
 	
 	protected Registry<StructureTemplatePool> templatePoolRegistry;
 	protected Registry<StructureProcessorList> processorListRegistry;
@@ -24,13 +25,13 @@ public class StructureRegisterPool
 	{
 		templatePoolRegistry= event.getServer()
 				.registryAccess()
-				.registry(Registry.TEMPLATE_POOL_REGISTRY)
-				.orElseThrow();
+				.registry(Registries.TEMPLATE_POOL)
+				.get();
 		
 		processorListRegistry = event.getServer()
 				.registryAccess()
-				.registry(Registry.PROCESSOR_LIST_REGISTRY)
-				.orElseThrow();		
+				.registry(Registries.PROCESSOR_LIST)
+				.get();		
 	}
 	
 	public void RegisterStructureToPool(ResourceLocation poolResourceLocation, ResourceLocation nbtResourceLocation, int weight) 
@@ -44,7 +45,7 @@ public class StructureRegisterPool
 		}
 		
 		var piece = SinglePoolElement
-				.legacy(nbtResourceLocation.toString(), emptyProcessorList)
+				.single(nbtResourceLocation.toString(), emptyProcessorList)
 				.apply(StructureTemplatePool.Projection.RIGID);
 		
 		for (int i = 0; i < weight; i++) 

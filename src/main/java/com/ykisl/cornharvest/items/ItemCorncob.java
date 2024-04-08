@@ -16,7 +16,6 @@ import net.minecraft.world.entity.npc.VillagerProfession;
 import net.minecraft.world.entity.npc.VillagerType;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.food.FoodProperties;
-import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -40,7 +39,7 @@ public class ItemCorncob extends Item implements IAnimalFoodItem, IVilagerTradab
     public static Item.Properties GetItemProperties()
     {
         var itemProperties = new Item.Properties();
-        itemProperties.tab(CreativeModeTab.TAB_FOOD);
+        //itemProperties.tab(CreativeModeTab.TAB_FOOD);
 
         var foodPropertiesBuilder = new FoodProperties.Builder();
         foodPropertiesBuilder.saturationMod(saturation);
@@ -97,7 +96,7 @@ public class ItemCorncob extends Item implements IAnimalFoodItem, IVilagerTradab
 			var vilagerLevel = 1;
 			trades.get(vilagerLevel).add((trader, rand) -> GetSellMerchantOffer(trader, rand));
 		}
-		}
+	}
 	
 	private MerchantOffer GetSellMerchantOffer(Entity trader, RandomSource randomSource) 
 	{

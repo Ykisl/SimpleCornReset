@@ -19,7 +19,14 @@
     "corn": {
       "trigger": "minecraft:placed_block",
       "conditions": {
-        "block": "cornharvest:corn"
+        "player": [],
+        "location": [
+          {
+            "condition": "minecraft:block_state_property",
+            "block": "cornharvest:corn",
+            "properties": {}
+          }
+        ]
       }
     }
   },
@@ -27,5 +34,8 @@
     [
       "corn"
     ]
-  ]
+  ],
+  "rewards": {
+    "experience": 7
+  }
 }

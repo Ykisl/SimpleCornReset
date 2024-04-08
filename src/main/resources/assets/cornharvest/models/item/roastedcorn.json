@@ -1,6 +1,6 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "cornharvest:items/roastedcorn"
+        "layer0": "cornharvest:item/roastedcorn"
     }
 }

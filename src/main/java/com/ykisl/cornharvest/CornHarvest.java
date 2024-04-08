@@ -57,14 +57,4 @@ public class CornHarvest
     {
     	return LOGGER;
     }
-    
-    @Mod.EventBusSubscriber(modid = MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
-    public static class ClientModEvents
-    {
-        @SubscribeEvent
-        public static void onClientSetup(FMLClientSetupEvent event)
-        {
-        	ModItems.ClientSetup(event);
-        }
-    }
 }

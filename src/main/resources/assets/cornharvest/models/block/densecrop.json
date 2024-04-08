@@ -1,8 +1,8 @@
 {
 "ambientocclusion": false,
 "textures": {
-    "crop": "cornharvest:blocks/corn_1",
-    "particle": "cornharvest:blocks/corn_1"
+    "crop": "cornharvest:block/corn_1",
+    "particle": "cornharvest:block/corn_1"
 },
 "render_type": "cutout",
 "elements": [ 

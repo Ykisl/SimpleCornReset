@@ -30,7 +30,7 @@ public interface IAnimalFoodItem
     		
         	var age = animal.getAge();
         	
-        	if(!animal.level.isClientSide && age == 0 &&  animal.canFallInLove())
+        	if(!animal.level().isClientSide() && age == 0 &&  animal.canFallInLove())
         	{
         		useItem(player, interactionHand, itemStack);
         		animal.setInLove(player);
@@ -41,10 +41,10 @@ public interface IAnimalFoodItem
         	{
         		useItem(player, interactionHand, itemStack);
         		animal.ageUp(Animal.getSpeedUpSecondsWhenFeeding(-age), true);
-        		return InteractionResult.sidedSuccess(animal.level.isClientSide);
+        		return InteractionResult.sidedSuccess(animal.level().isClientSide());
         	}
         	
-        	if(animal.level.isClientSide) 
+        	if(animal.level().isClientSide()) 
         	{
         		return InteractionResult.CONSUME;
         	}

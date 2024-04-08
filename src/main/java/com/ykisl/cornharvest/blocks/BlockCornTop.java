@@ -2,7 +2,6 @@ package com.ykisl.cornharvest.blocks;
 
 import com.ykisl.cornharvest.init.ModBlocks;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
@@ -13,7 +12,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.common.ForgeHooks;
-import net.minecraftforge.common.Tags.Blocks;
 
 public class BlockCornTop extends BlockCorn
 {

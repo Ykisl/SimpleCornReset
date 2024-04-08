@@ -1,7 +1,6 @@
 package com.ykisl.cornharvest.items;
 
 import net.minecraft.world.food.FoodProperties;
-import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 
 public class ItemRoastedCorn 
@@ -12,7 +11,7 @@ public class ItemRoastedCorn
     public static Item GetItem()
     {
         var itemProperties = new Item.Properties();
-        itemProperties.tab(CreativeModeTab.TAB_FOOD);
+        //itemProperties.tab(CreativeModeTab.TAB_FOOD);
 
         var foodPropertiesBuilder = new FoodProperties.Builder();
         foodPropertiesBuilder.saturationMod(saturation);

@@ -1,6 +1,6 @@
 {
     "parent": "cornharvest:block/densecrop",
     "textures": {
-        "crop": "cornharvest:blocks/corn_1"
+        "crop": "cornharvest:block/corn_1"
     }
 }

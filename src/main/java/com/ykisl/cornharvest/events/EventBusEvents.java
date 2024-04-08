@@ -15,12 +15,7 @@ import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(modid = CornHarvest.MODID)
 public class EventBusEvents 
-{
-	@SubscribeEvent
-    public static void onServerStarting(ServerStartingEvent event)
-    {
-    }
-	
+{	
 	@SubscribeEvent
 	public static void onServerAboutToStartEvent(final ServerAboutToStartEvent event) 
 	{

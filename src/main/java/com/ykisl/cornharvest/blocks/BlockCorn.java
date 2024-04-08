@@ -1,10 +1,10 @@
 package com.ykisl.cornharvest.blocks;
 
-import com.ykisl.cornharvest.CornHarvest;
 import com.ykisl.cornharvest.config.CornHarvestConfig;
 import com.ykisl.cornharvest.init.ModBlocks;
 import com.ykisl.cornharvest.init.ModItems;
 
+import net.minecraft.client.resources.model.Material;
 import net.minecraft.core.BlockPos;
 
 import net.minecraft.server.level.ServerLevel;
@@ -12,8 +12,6 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
@@ -25,12 +23,10 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.level.material.Material;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.common.ForgeHooks;
-import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 
 public class BlockCorn extends CropBlock
 {
@@ -42,7 +38,7 @@ public class BlockCorn extends CropBlock
 	
 	public BlockCorn() 
 	{
-		super(Block.Properties.of(Material.PLANT).strength(friction, explosionResistance).sound(SoundType.CROP).noCollission());
+		super(Block.Properties.of().strength(friction, explosionResistance).sound(SoundType.CROP).noCollission());
 	}
 	
 	protected static final VoxelShape[] SHAPES = new VoxelShape[] { 
@@ -122,7 +118,7 @@ public class BlockCorn extends CropBlock
 					var newPos = blockPos.above();
 					var newBlockState = level.getBlockState(newPos);
 					
-					var canBeReplaced = newBlockState.getMaterial().isReplaceable();
+					var canBeReplaced = newBlockState.canBeReplaced();
 					if(canBeReplaced && ForgeHooks.onCropsGrowPre(level, newPos, nextState, canGrow)) 
 					{
 						level.setBlock(newPos, nextState, 2);
@@ -139,7 +135,7 @@ public class BlockCorn extends CropBlock
 				var newPos = blockPos.above();
 				var newBlockState = level.getBlockState(newPos);
 				
-				var canBeReplaced = newBlockState.getMaterial().isReplaceable();
+				var canBeReplaced = newBlockState.canBeReplaced();
 				if(canBeReplaced && ForgeHooks.onCropsGrowPre(level, newPos, nextState, canGrow)) 
 				{
 					level.setBlock(newPos, nextState, 2);
@@ -162,15 +158,15 @@ public class BlockCorn extends CropBlock
 	}
 	
 	@Override
-	public boolean isValidBonemealTarget(BlockGetter blockGetter, BlockPos blockPos, BlockState blockState, boolean isClient) 
+	public boolean isValidBonemealTarget(LevelReader reader, BlockPos blockPos, BlockState blockState, boolean isClient) 
 	{
-		return isValidPlantBonemeal(blockGetter, blockPos, blockState);
+		return isValidPlantBonemeal(reader, blockPos, blockState);
 	}
 	
 	@Override
 	public boolean isBonemealSuccess(Level level, RandomSource randomSource, BlockPos blockPos, BlockState blockState) 
 	{
-		return isValidBonemealTarget(level, blockPos, level.getBlockState(blockPos), level.isClientSide());
+		return isValidPlantBonemeal(level, blockPos, level.getBlockState(blockPos));
 	}
 	
 	public BlockState getNextState() 
@@ -228,7 +224,7 @@ public class BlockCorn extends CropBlock
 		}		
 		
 		var isCornAbove = blockGetter.getBlockState(blockPos.above()).getBlock() instanceof BlockCorn;	
-		return isCornAbove || blockGetter.getBlockState(blockPos.above()).getMaterial().isReplaceable();
+		return isCornAbove || blockGetter.getBlockState(blockPos.above()).canBeReplaced();
 	}
 
 	protected boolean IsEasyHarvesting() 
@@ -292,8 +288,6 @@ public class BlockCorn extends CropBlock
 	{
 		if(IsEasyHarvesting()) 
 		{
-			var item = player.getItemInHand(interactionHand);
-			
 			var canHarvest = CanHarvest(blockState, level, blockPos);			
 			if(canHarvest) 
 			{

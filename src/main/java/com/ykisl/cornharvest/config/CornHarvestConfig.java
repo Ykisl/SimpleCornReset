@@ -1,7 +1,5 @@
 package com.ykisl.cornharvest.config;
 
-import org.antlr.v4.parse.ANTLRParser.finallyClause_return;
-
 import com.ykisl.cornharvest.CornHarvest;
 
 import net.minecraftforge.common.ForgeConfigSpec;

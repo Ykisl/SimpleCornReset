@@ -28,7 +28,7 @@
           "formula": "minecraft:binomial_with_bonus_count",
           "parameters": {
             "extra": 1,
-            "probability": 0.5714286
+            "probability": 0.2714286
           }
         }
       ]

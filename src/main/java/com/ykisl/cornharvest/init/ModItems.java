@@ -13,8 +13,10 @@ import com.ykisl.cornharvest.utils.ImmutableUtils;
 
 import net.minecraft.world.entity.ai.behavior.WorkAtComposter;
 import net.minecraft.world.entity.npc.Villager;
+import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.ComposterBlock;
+import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.entity.EntityJoinLevelEvent;
 import net.minecraftforge.event.village.VillagerTradesEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -52,11 +54,6 @@ public class ModItems
     	Villager.WANTED_ITEMS = ImmutableUtils.AppendElement(Villager.WANTED_ITEMS, KERNELS.get());
     }
     
-    public static void ClientSetup(FMLClientSetupEvent event) 
-	{
-    	
-	}
-    
     public static void EntityJoinWorldSetup(EntityJoinLevelEvent entityJoinLevelEvent)
     {
     	((IAnimalFoodItem)CORNCOB.get()).EntityJoinWorldSetup(entityJoinLevelEvent);
@@ -67,4 +64,21 @@ public class ModItems
     {
 		((IVilagerTradable)CORNCOB.get()).VilagerTradeSetup(event);
 	}
+    
+    public static void BuildCreativeModeTab(BuildCreativeModeTabContentsEvent event)
+    {
+    	if(event.getTabKey() == CreativeModeTabs.FOOD_AND_DRINKS) 
+    	{
+    		event.accept(CORNCOB);
+    		event.accept(ROASTEDCORN);
+    		event.accept(POPPEDCORN);
+    		event.accept(CORNCHOWDER);
+    		event.accept(CHICKENCORNCHOWDER);
+    	}
+    	
+    	if(event.getTabKey() == CreativeModeTabs.NATURAL_BLOCKS) 
+    	{
+    		event.accept(KERNELS);
+    	}
+    }
 }
